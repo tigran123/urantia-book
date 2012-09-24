@@ -1,0 +1,142 @@
+\NeedsTeXFormat{LaTeX2e}[2000/06/01]
+\ProvidesPackage{urantia-book}[2010/05/25 v1.0]
+\RequirePackage[parvs,nomarnvs,nogeometry,lettrine,vssup,nofnpara]{bible}
+\RequirePackage{xltxtra,polyglossia,hyphenat,ulem}
+%\tunemarkuptag{pgafour}
+%\tunemarkuptag{pgletter}
+%\tunemarkuptag{pgluluhb}
+%\tunemarkuptag{pgroyal}
+\tunemarkuptag{pghanlin}
+%\tunemarkuptag{pguversa}
+%\tunemarkuptag{pgkindledx}
+\setdefaultlanguage{english}
+\def\urantiaparttitlefont{GoudyHandtooled BT}
+\def\urantiamainfont{Minion Pro}
+\def\urantiatitlefont{Minion Pro}
+\def\urantiaheaderfont{Minion Pro}
+\def\urantiaheadingfont{Minion Pro}
+\def\urantiaheaderackfont{Minion Pro}
+\def\urantiaexplfont{Minion Pro Italic}
+\input tex/urantia-core.tex
+\input tex/urantia-hyphen-en.tex
+
+\renewcommand{\DefaultLoversize}{0.118}
+
+\AtBeginDocument{%
+\hypersetup{%
+  pdftitle={The Urantia Book},%
+  pdfauthor={The Urantia Book Fellowship - http://www.urantiabook.org},%
+  pdfcreator={Bibles.org.uk Typesetting Environment},%
+  pdfsubject={The Urantia Book},%
+  pdfkeywords={Urantia,Universe,history,religion,fifth,epochal,revelation,God,Jesus,Michael,Christianity},%
+  pdflang={English},%
+  pdfcreationdate={D:20100601212605Z},%
+  pdfmoddate={D:\pdfdate-00'00'}%
+}%
+}
+
+\renewcommand{\uforeword}{%
+\begin{center}
+\newpage\thispagestyle{empty}%
+\headerfont\bibpapertitlefont\forewordup
+\end{center}%
+\ubookdescr{p0}{
+   toc={\makebox[0.08\linewidth][r]{0. }\makebox[0.79\linewidth][l]{\forewordtoc\bibdf}},
+   bookmark={\forewordbmk},
+   header={\forewordhdr},
+   abbr={p0}
+}%
+\setcounter{paper}{0}%
+\setcounter{secnum}{0}%
+\fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
+\fancyhead[CO]{\bibheadfont\forewordup}%
+\bib@raise@anchor{\bibpdfbookmark[2]{0. \forewordbmk}{Foreword_0}}
+}
+
+\renewcommand{\upaper}[2]{%
+\newpage\thispagestyle{empty}%
+\par\vskip1ex\pagebreak[3]%
+\setcounter{paper}{#1}%
+\setcounter{secnum}{0}%
+\bibpaperdisplay{#1}{#2}%
+ \ubookdescr{p#1}{
+   toc={\makebox[0.08\linewidth][r]{#1. }\makebox[0.79\linewidth][l]{#2\bibdf}},
+   bookmark={#1. #2},
+   header={#2},
+   abbr={p#1}
+}%
+\fancyhead[CO]{\bibheadfont\tunemarkup{pghanlin}{\headersizeadjusthanlin{#1}\addfontfeature{WordSpace=1.1}}\tunemarkup{pgluluhb}{\headersizeadjustluluhb{#1}}\MakeUppercase{#2}}%
+\ifnum #1>0
+   \fancyhead[CE]{\bibheadfont\partitxt. \partiup}%
+\fi
+\ifnum #1>31
+   \fancyhead[CE]{\bibheadfont\partiitxt. \partiiup}%
+\fi
+\ifnum #1>56
+   \fancyhead[CE]{\bibheadfont\partiiitxt. \partiiiup}%
+\fi
+\ifnum #1>119
+   \fancyhead[CE]{\bibheadfont\partivtxt. \partivup}%
+\fi
+\bib@raise@anchor{\bibpdfbookmark[2]{0. #2}{p#1_0}}
+}
+
+\tunemarkup{pghanlin}{%
+\definecolor{azureblue}{rgb}{0.0, 0.5, 1.0}
+\renewcommand{\headrulewidth}{0mm}
+\setcounter{DefaultLines}{2}
+% for Garamond \renewcommand{\DefaultLoversize}{0.1145}
+% for Old Standard \renewcommand{\DefaultLoversize}{0.162}
+\renewcommand{\DefaultLoversize}{0.118}
+\newcommand{\titlesepbig}{{\usefont{U}{webo}{xl}{n}\Huge ahb}}
+\renewcommand{\author}[1]{{\fontsize{11.5}{11.5}\itshape\mbox{}\vspace*{-0.6ex}\hfill#1\hfill\mbox{}}}
+\renewcommand{\biblogoscale}{0.15}
+\def\pc{{\fontsize{10}{10}\selectfont\P}\kern2pt}
+\renewcommand*{\biburl}[1]{{\fontsize{6}{6}\selectfont\url{#1}}}
+\renewcommand{\bibpaperfont}{\fontsize{11}{12}\selectfont}
+\renewcommand{\bibpapertitlefont}{\fontsize{13}{14}\selectfont}
+\renewcommand{\bibbookend}{\fontsize{15}{17}\selectfont}
+\renewcommand{\urantiamainfontsize}{15/17}
+\renewcommand{\footnotesize}{\fontsize{13}{15}\selectfont}
+\renewcommand{\bibheadfont}{\headingfont\fontsize{7.4}{7.4}\selectfont}
+\renewcommand{\bibtocheadfont}{\fontsize{11}{11}\selectfont}
+\renewcommand{\bibtocfont}{\fontsize{9.5}{10.5}\selectfont}
+\renewcommand{\headersizeadjusthanlin}[1]{%
+\ifnum #1=9
+   \fontsize{7.2}{7.2}
+\fi
+\ifnum #1=97
+   \fontsize{6.7}{6.7}
+\fi
+\ifnum #1=191
+   \fontsize{6.6}{6.6}
+\fi
+\selectfont
+}
+}
+
+\def\ackn{Acknowledgment}
+\def\continuedtxt{(continued)}
+\def\forewordup{FOREWORD}
+\def\forewordtoc{Foreword}
+\def\forewordbmk{Foreword}
+\def\forewordhdr{foreword}
+\def\urantiabook{THE URANTIA BOOK}
+\def\papertxt{PAPER}
+\def\partitxt{PART I}
+\def\partiup{THE CENTRAL AND SUPERUNIVERSES}
+\def\partimix{The Central and Superuniverses}
+\def\partisub{Sponsored by a Uversa Corps of Superuniverse Personalities\\acting by authority of the Orvonton\\Ancients of Days.}
+\def\partiitxt{PART II}
+\def\partiiup{THE LOCAL UNIVERSE}
+\def\partiimix{The Local Universe}
+\def\partiisub{Sponsored by a Nebadon Corps of Local Universe\\Personalities acting by authority of\\Gabriel of Salvington.}
+\def\partiiitxt{PART III}
+\def\partiiiup{THE HISTORY OF URANTIA}
+\def\partiiimix{The History of Urantia}
+\def\partiiisub{These papers were sponsored by a Corps of\\Local Universe Personalities acting by\\authority of Gabriel of Salvington.}
+\def\partivtxt{PART IV}
+\def\partivup{THE LIFE AND TEACHINGS OF JESUS}
+\def\partivmix{The Life and Teachings of Jesus}
+\def\partivsubone{This group of papers was sponsored by a commission of twelve Urantia\\midwayers acting under the supervision of a Melchizedek\\revelatory director.}
+\def\partivsubtwo{The basis of this narrative was supplied by a secondary midwayer\\who was onetime assigned to the superhuman watchcare\\of the Apostle Andrew.}
